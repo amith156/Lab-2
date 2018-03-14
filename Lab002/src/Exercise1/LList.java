@@ -75,7 +75,6 @@ public class LList<T> {
 				found_status = true;
 				break;
 			}
-			
 		}
 		if(found_status)
 		{
@@ -85,9 +84,29 @@ public class LList<T> {
 			return pos-1;
 	}
 	
+	public boolean removeAll(T x)
+	{
+		ListCell<T> item_list;
+		ListCell<T> previous= front;
+		int item_count=0;
+		for(item_list=front; item_list!=null; item_list= item_list.next)
+		{
+			if(item_list.data==x)
+			{
+				item_count++;
+				front = front.next;
+			}
+		}
+		if(item_count > 0)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
 	
-	
-	public String toString() {
+	public String toString() 
+	{
 		StringBuffer sb = new StringBuffer("<");
 		ListCell<T> c = front;
 		while (c != null) {
